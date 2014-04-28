@@ -1,0 +1,30 @@
+#!/usr/bin/ruby
+
+require_relative "../lib/cbradeps"
+
+def help_text
+  <<-USAGE
+cbradeps [application path]
+
+Component-based Ruby/Rails dependency grapher.
+
+Options are...
+    -h, -H, --help                   Display this help message.
+  USAGE
+end
+
+case ARGV.size
+  when 0
+    Cbradeps.()
+  when 1
+    param = ARGV[0]
+    if %w(--help -h -H).include? param
+      puts help_text
+    else
+      Cbradeps.(param)
+    end
+  else
+    puts "Incorrect invocation. Please see help:\n\n"
+    puts help_text
+    exit 1
+end
