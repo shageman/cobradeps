@@ -1,16 +1,23 @@
 module Cbradeps
   class GemfileDependency
-    def initialize(gemspec_line)
-      @gemspec_line = gemspec_line.strip
+    def initialize(root_path, gemfile_line)
+      @gemfile_line = gemfile_line.strip
+      @root_path = root_path
     end
 
     def name
-      match = @gemspec_line.match(/gem\s+["']([^'"]+)["']/)
+      match = @gemfile_line.match(/gem\s+["']([^'"]+)["']/)
       match[1] if match
     end
 
     def path
-      match = @gemspec_line.match(/path(?:\s*=>|:)\s+["']([^'"]+)["']/)
+      File.expand_path(File.join(@root_path, sub_path))
+    end
+
+    private
+
+    def sub_path
+      match = @gemfile_line.match(/path(?:\s*=>|:)\s+["']([^'"]+)["']/)
       match[1] if match
     end
   end

@@ -1,3 +1,4 @@
+#TODO extract gemspec depdency detection
 #TODO handle nested rails app
 #TODO optionally output dotfile for internal deps
 #TODO optionally output dotfile for all deps
@@ -13,6 +14,7 @@ module Cbradeps
   require_relative "cbradeps/gem_info"
   require_relative "cbradeps/gems_scraper"
   require_relative "cbradeps/gemfile_dependency"
+  require_relative "cbradeps/gemspec_dependency"
 
   def self.call(root_path = nil)
     path = root_path || current_path

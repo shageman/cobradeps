@@ -18,42 +18,24 @@ module Cbradeps
     private
 
     def cbra_dependency_paths
-      cbra_dependencies.map do |dependency|
-        File.expand_path(File.join(@gemspec_path, dependency.path))
-      end
-    end
-
-    def cbra_dependencies
       return [] unless @raw_gemfile
-      @raw_gemfile.map do |line|
-        GemfileDependency.new(line) if path_dependency?(line)
-      end.compact
+      @raw_gemfile.map { |line| GemfileDependency.new(@gemspec_path, line) }.select{|dep| dep.name }.map(&:path).compact
     end
 
     def runtime_dependency_names
       return [] unless @raw_gemspec
-      @raw_gemspec.map do |line|
-        match = line.match(/add_dependency\s+["']([^'"]+)["']/)
-        match ? match[1] : nil
-      end.compact
+      @raw_gemspec.map { |line| GemspecDependency.new(line) }.select{|dep| dep.runtime? }.map(&:name).compact
     end
 
     def test_dependency_names
       return [] unless @raw_gemspec
-      @raw_gemspec.map do |line|
-        match = line.match(/add_development_dependency\s+["']([^'"]+)["']/)
-        match ? match[1] : nil
-      end.compact
+      @raw_gemspec.map { |line| GemspecDependency.new(line) }.select{|dep| !dep.runtime? }.map(&:name).compact
     end
 
     def puts_with_preceding_newline(array)
       result = ""
       result += "\n        " unless array.empty?
       result + array.join("\n        ")
-    end
-
-    def path_dependency?(line)
-      line.match(/:path\s*=>/) || line.match(/path:/)
     end
   end
 end
