@@ -1,8 +1,8 @@
-#TODO extract gemspec depdency detection
-#TODO handle nested rails app
+#TODO handle nested rails app (detect folders with only gemfiles too)
 #TODO optionally output dotfile for internal deps
 #TODO optionally output dotfile for all deps
 #TODO support windows folders (searching for a couple slashes)
+#TODO support windows: don't shell out to find gemspecs and gemfiles
 #TODO - info if no gem file found for gem
 #TODO - warn if gem has name different than folder
 #TODO - warn if same gem name is found with path and without
