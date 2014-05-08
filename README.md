@@ -27,7 +27,6 @@ Or install it yourself as:
 
 ##TODOs
 
-* optionally output dotfile for internal deps
 * optionally output dotfile for all deps
 * support windows folders (searching for a couple slashes)
 * support windows: don't shell out to find gemspecs and gemfiles

@@ -11,6 +11,7 @@ Component-based Ruby/Rails dependency grapher.
 Options are...
     -h, -H, --help                   Display this help message.
     -g, --graph                      Outputs graph.png to the current directory
+    -d, --dot                        Outputs graph.dot to the current directory
   USAGE
 end
 
@@ -23,6 +24,8 @@ case ARGV.size
       puts help_text
     elsif %w(-g --graph).include? param
       Cbradeps.output_graph ARGV.last
+    elsif %w(-d --dot).include? param
+      Cbradeps.output_dot ARGV.last
     else
       Cbradeps.output_as_text ARGV.last
     end

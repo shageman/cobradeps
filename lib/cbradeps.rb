@@ -28,9 +28,24 @@ module Cbradeps
   end
 
   def self.output_graph(root_path = nil)
+    path = root_path || current_path
+    graph(path).output(:png => "graph.png")
+  end
+
+  def self.output_dot(root_path = nil)
+    path = root_path || current_path
+    graph(path).output(:dot => "graph.dot")
+  end
+
+  def self.current_path
+    `pwd`.chomp
+  end
+
+  private_class_method :current_path
+
+  def self.graph(path)
     g = GraphViz.new(:G, :type => :digraph)
 
-    path = root_path || current_path
     app = GemfileScraper.new(path)
 
     app_node = g.add_nodes(app.name)
@@ -57,13 +72,8 @@ module Cbradeps
         puts "Added edge from #{gem.name} to #{nest_gem.name}"
       end
     end
-
-    g.output(:png => "graph.png")
+    g
   end
 
-  def self.current_path
-    `pwd`.chomp
-  end
-
-  private_class_method :current_path
+  private_class_method :graph
 end
