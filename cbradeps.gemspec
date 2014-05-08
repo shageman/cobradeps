@@ -20,11 +20,7 @@ DOC
                           bin/cbradeps
                           cbradeps.gemspec
                           Gemfile
-                          lib/cbradeps/dependencies.rb
-                          lib/cbradeps/gemfile_dependency.rb
-                          lib/cbradeps/gemspec_dependency.rb
-                          lib/cbradeps/gem_info.rb
-                          lib/cbradeps/gems_scraper.rb
+                          lib/cbradeps/gemfile_scraper.rb
                           lib/cbradeps.rb
                           LICENSE
                           Rakefile

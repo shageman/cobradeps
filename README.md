@@ -27,7 +27,6 @@ Or install it yourself as:
 
 ##TODOs
 
-* handle nested rails app (detect folders with only gemfiles too)
 * optionally output dotfile for internal deps
 * optionally output dotfile for all deps
 * support windows folders (searching for a couple slashes)
