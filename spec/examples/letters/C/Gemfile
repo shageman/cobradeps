@@ -1,0 +1,9 @@
+source 'https://rubygems.org'
+
+# Specify your gem's dependencies in C.gemspec
+gemspec
+
+gem "D", path: "../D"
+gem "E1", path: "../E1"
+gem "E2", path: "../E2"
+gem "F", path: "../F"
