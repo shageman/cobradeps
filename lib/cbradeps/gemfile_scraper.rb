@@ -4,11 +4,22 @@ module Cbradeps
       @root_path = root_path
     end
 
+    def name
+      Pathname.new(@root_path).basename.to_s
+    end
+
     def to_s
       cbra_dependencies
     end
 
     def cbra_dependencies
+      dirdep = direct_dependencies
+      transitive_cbra_dependencies.select do |dep|
+        dirdep.include? dep[:name]
+      end
+    end
+
+    def transitive_cbra_dependencies
       gem_dependencies.inject([]) do |memo, dep|
         if !!dep[:options][:path]
           absolute_dep = dep.clone
@@ -20,31 +31,52 @@ module Cbradeps
     end
 
     private
-    
+
+    def raw_gemspec
+      path = File.expand_path(File.join(@root_path, "#{underscore(name)}.gemspec"))
+      File.exist?(path) ? File.read(path) : ""
+    end
+
+    def direct_dependencies
+      raw_gemspec.split("\n").inject([]) do |memo, line|
+        match = line.match(/add_(?:development_)?dependency\s+["']([^'"]+)["']/)
+        memo << match[1] if match
+        memo
+      end
+    end
+
     def raw_gemfile
       path = File.expand_path(File.join(@root_path, "Gemfile"))
       File.read(path)
     end
-    
+
     def gem_dependencies
       raw_gemfile.split("\n").inject([]) do |memo, line|
         match = line.match(/gem\s+["']([^'"]+)["'](.*)/)
         if match
-          memo << {dependency: match[1], options: OptionParser.new(match[2]).parse}
+          memo << {name: match[1], options: OptionParser.new(match[2]).parse}
         end
         memo
       end
     end
-    
+
+    def underscore(string)
+      string.gsub(/::/, '/').
+          gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2').
+          gsub(/([a-z\d])([A-Z])/, '\1_\2').
+          tr("-", "_").
+          downcase
+    end
+
     class OptionParser
       def initialize(options)
         @options = options
       end
-      
+
       def parse
         {}.merge(path)
       end
-      
+
       def path
         match = @options.match(/path(?:\s*=>|:)\s+["']([^'"]+)["']/)
         match ? {path: match[1]} : {}

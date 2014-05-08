@@ -4,24 +4,27 @@ require_relative "../lib/cbradeps"
 
 def help_text
   <<-USAGE
-cbradeps [application path]
+cbradeps [OPTIONS] [application path]
 
 Component-based Ruby/Rails dependency grapher.
 
 Options are...
     -h, -H, --help                   Display this help message.
+    -g, --graph                      Outputs graph.png to the current directory
   USAGE
 end
 
 case ARGV.size
   when 0
     Cbradeps.()
-  when 1
+  when 1, 2
     param = ARGV[0]
     if %w(--help -h -H).include? param
       puts help_text
+    elsif %w(-g --graph).include? param
+      Cbradeps.output_graph ARGV.last
     else
-      Cbradeps.(param)
+      Cbradeps.output_as_text ARGV.last
     end
   else
     puts "Incorrect invocation. Please see help:\n\n"
