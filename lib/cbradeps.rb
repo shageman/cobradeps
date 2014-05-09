@@ -49,16 +49,20 @@ module Cbradeps
     app = GemfileScraper.new(path)
 
     app_node = g.add_nodes(app.name)
-
     puts "Added #{app.name} node"
 
     cbra_deps = app.transitive_cbra_dependencies.to_set
     gem_nodes = {}
+
     cbra_deps.each do |dep|
       gem = GemfileScraper.new(dep[:options][:path])
       gem_node = g.add_nodes(gem.name)
       gem_nodes[gem.name] = gem_node
       puts "Added #{gem.name} node"
+      if dep[:options][:direct]
+        puts "Added edge from #{app.name} to #{gem.name}"
+        g.add_edges(app_node, gem_node)
+      end
     end
 
     cbra_deps.each do |dep|

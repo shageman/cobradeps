@@ -15,7 +15,7 @@ module Cbradeps
     def cbra_dependencies
       dirdep = direct_dependencies
       transitive_cbra_dependencies.select do |dep|
-        dirdep.include? dep[:name]
+        dirdep.include?(dep[:name]) || dep[:options][:direct]
       end
     end
 
@@ -74,12 +74,19 @@ module Cbradeps
       end
 
       def parse
-        {}.merge(path)
+        {}.merge(path).merge(direct)
       end
+
+      private
 
       def path
         match = @options.match(/path(?:\s*=>|:)\s+["']([^'"]+)["']/)
         match ? {path: match[1]} : {}
+      end
+
+      def direct
+        match = @options.match(/direct(?:\s*=>|:)\s+true/)
+        match ? {direct: true} : {}
       end
     end
   end
