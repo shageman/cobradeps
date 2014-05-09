@@ -18,11 +18,15 @@ Or install it yourself as:
 
 ## Usage
 
-    cbradeps [application path]
-    
+    cbradeps [OPTION] [application path]
+
     Component-based Ruby/Rails dependency grapher.
-    
+
     Options are...
+        -t, --text                       DEFAULT Outputs a textual representation of the dependencies
+        -g, --graph                      Outputs graph.png to the current directory
+        -d, --dot                        Outputs graph.dot to the current directory
+
         -h, -H, --help                   Display this help message.
 
 ##TODOs
@@ -39,8 +43,8 @@ Or install it yourself as:
 
 ## License
 
-    Copyright (c) 2014 Stephan Hagemann
-    twitter.com/shageman
-    stephan.hagemann@gmail.com
+Copyright (c) 2014 Stephan Hagemann
+http://twitter.com/shageman
+stephan.hagemann@gmail.com
 
-    Released under the MIT license. See LICENSE file for details.
+Released under the MIT license. See LICENSE file for details.
