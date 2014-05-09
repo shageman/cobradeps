@@ -41,6 +41,6 @@ if option
   elsif %w(-d --dot).include? option
     Cbradeps.output_dot path
   else %w(-t --text).include? option
-    Cbradeps.output_as_text path
+    Cbradeps.output_text path
   end
 end

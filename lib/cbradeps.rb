@@ -5,7 +5,7 @@ require 'graphviz'
 module Cbradeps
   require_relative "cbradeps/gemfile_scraper"
 
-  def self.output_as_text(root_path = nil)
+  def self.output_text(root_path = nil)
     path = root_path || current_path
     app = GemfileScraper.new(path)
 
