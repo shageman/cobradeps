@@ -23,7 +23,11 @@ path = nil
 case ARGV.size
   when 0
   when 1
-    path = ARGV[0]
+    if ARGV[0].start_with? "-"
+      option = ARGV[0]
+    else
+      path = ARGV[0]
+    end
   when 2
     option = ARGV[0]
     path = ARGV[1]
@@ -40,7 +44,7 @@ if option
     Cbradeps.output_graph path
   elsif %w(-d --dot).include? option
     Cbradeps.output_dot path
-  else %w(-t --text).include? option
+  elsif %w(-t --text).include? option
     Cbradeps.output_text path
   end
 end
