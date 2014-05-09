@@ -1,6 +1,6 @@
 # cbradeps
 
-Prints and exports the dependencies within component-based Ruby/Rails applications
+Prints and exports the dependencies within component-based Ruby/Rails applications (#cbra)
 
 ## Installation
 
@@ -29,9 +29,14 @@ Or install it yourself as:
 
         -h, -H, --help                   Display this help message.
 
+## Example
+
+There are sample #cbra folder structures in `spec/examples`. Here is the graph generated for the letters app structure:
+
+![Letters graph](https://github.com/shageman/cbradeps/blob/master/spec/examples/letters.png)
+
 ##TODOs
 
-* optionally output dotfile for all deps
 * support windows folders (searching for a couple slashes)
 * support windows: don't shell out to find gemspecs and gemfiles
 * info if no gem file found for gem
