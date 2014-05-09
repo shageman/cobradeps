@@ -1,4 +1,4 @@
-# cbradeps [![Build Status](https://travis-ci.org/shageman/cbradeps.svg?branch=master)](https://travis-ci.org/shageman/cbradeps)
+# cbradeps [![Build Status](https://travis-ci.org/shageman/cbradeps.svg?branch=master)](https://travis-ci.org/shageman/cbradeps) [![Gem Version](https://badge.fury.io/rb/cbradeps.svg)](http://badge.fury.io/rb/cbradeps) [![Code Climate](https://codeclimate.com/github/shageman/cbradeps.png)](https://codeclimate.com/github/shageman/cbradeps) [![Dependency Status](https://gemnasium.com/shageman/cbradeps.svg)](https://gemnasium.com/shageman/cbradeps)
 
 Prints and exports the dependencies within component-based Ruby/Rails applications (#cbra)
 
