@@ -7,8 +7,10 @@ describe Cbradeps::GemfileScraper do
 
   describe "#cbra_dependencies" do
     it "returns an array of hashes of the direct cbra_dependencies" do
+      start_path = File.expand_path(File.join(__FILE__, "..", "..", "..", "spec", "examples", "letters", "A"))
       expected_path = File.expand_path(File.join(__FILE__, "..", "..", "..", "spec", "examples", "letters", "B"))
-      scraper = described_class.new("spec/examples/letters/A")
+
+      scraper = described_class.new(start_path)
       expect(scraper.cbra_dependencies).to eq([
                                                   {:name => "B",
                                                    :options =>
@@ -21,8 +23,10 @@ describe Cbradeps::GemfileScraper do
     end
 
     it "returns an array of hashes of the runtime cbra_dependencies of a gem" do
+      start_path = File.expand_path(File.join(__FILE__, "..", "..", "..", "spec", "examples", "letters", "B"))
       expected_path = File.expand_path(File.join(__FILE__, "..", "..", "..", "spec", "examples", "letters", "C"))
-      scraper = described_class.new("spec/examples/letters/B")
+
+      scraper = described_class.new(start_path)
       expect(scraper.cbra_dependencies).to eq([
                                                   {:name => "C",
                                                    :options =>
@@ -36,8 +40,10 @@ describe Cbradeps::GemfileScraper do
 
   describe "#transitive_cbra_dependencies" do
     it "returns an array of hashes of the all (transitive) cbra_dependencies" do
+      start_path = File.expand_path(File.join(__FILE__, "..", "..", "..", "spec", "examples", "letters", "D"))
       expected_base_path = File.expand_path(File.join(__FILE__, "..", "..", "..", "spec", "examples", "letters"))
-      scraper = described_class.new("spec/examples/letters/D")
+
+      scraper = described_class.new(start_path)
       expect(scraper.transitive_cbra_dependencies).to eq([
                                                              {:name => "E1",
                                                               :options =>

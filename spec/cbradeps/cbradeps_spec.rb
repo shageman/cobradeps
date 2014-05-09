@@ -9,9 +9,10 @@ describe Cbradeps do
   end
 
   it "outputs a cbra dependency structure as text" do
+    start_path = File.expand_path(File.join(__FILE__, "..", "..", "..", "spec", "examples", "letters", "E1"))
     expected_path = File.expand_path(File.join(__FILE__, "..", "..", "..", "spec", "examples", "letters", "F"))
 
-    Cbradeps.output_text("spec/examples/letters/E1")
+    Cbradeps.output_text(start_path)
     expect(@puts).to eq(
                          ["APP",
                           [{:name => "F", :options => {:path => expected_path}}],
@@ -39,9 +40,11 @@ describe Cbradeps do
     end
 
     it "outputs a cbra dependency structure as a png" do
+      start_path = File.expand_path(File.join(__FILE__, "..", "..", "..", "spec", "examples", "letters", "A"))
+
       @mock_graph.should_receive(:output).with({:png => "graph.png"})
 
-      Cbradeps.output_graph("spec/examples/letters/A")
+      Cbradeps.output_graph(start_path)
       expect(@puts).to eq(
                            [
                                "Added A node",
@@ -78,9 +81,11 @@ describe Cbradeps do
     end
 
     it "outputs a cbra dependency structure as a dot file" do
+      start_path = File.expand_path(File.join(__FILE__, "..", "..", "..", "spec", "examples", "letters", "A"))
+
       @mock_graph.should_receive(:output).with({:dot => "graph.dot"})
 
-      Cbradeps.output_dot("spec/examples/letters/A")
+      Cbradeps.output_dot(start_path)
       expect(@puts).to eq(
                            [
                                "Added A node",
