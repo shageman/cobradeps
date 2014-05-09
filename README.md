@@ -33,7 +33,7 @@ Or install it yourself as:
 
 There are sample #cbra folder structures in `spec/examples`. Here is the graph generated for the letters app structure:
 
-![Letters graph](https://github.com/shageman/cbradeps/blob/master/spec/examples/letters.png)
+![Letters graph](https://raw.githubusercontent.com/shageman/cbradeps/master/spec/examples/letters.png)
 
 ##TODOs
 
