@@ -1,4 +1,4 @@
-# cbradeps
+# cbradeps [![Build Status](https://travis-ci.org/shageman/cbradeps.svg?branch=master)](https://travis-ci.org/shageman/cbradeps)
 
 Prints and exports the dependencies within component-based Ruby/Rails applications (#cbra)
 
@@ -50,7 +50,7 @@ To include direct dependencies of an application, add an additional option to th
     gem "E2", path: "../E2"
     gem "F", path: "../F"
 
-This is the (Gemfile of app A)[https://github.com/shageman/cbradeps/blob/master/spec/examples/letters/A/Gemfile]
+This is the [Gemfile of app A](https://github.com/shageman/cbradeps/blob/master/spec/examples/letters/A/Gemfile)
 from the letters example of which you see the graph above.
 
 ##TODOs
