@@ -48,8 +48,6 @@ There are sample #cbra folder structures in `spec/examples`. Here is the graph g
 
 ## License
 
-Copyright (c) 2014 Stephan Hagemann
-http://twitter.com/shageman
-stephan.hagemann@gmail.com
+Copyright (c) 2014 Stephan Hagemann, stephan.hagemann@gmail.com, [@shageman](http://twitter.com/shageman)
 
 Released under the MIT license. See LICENSE file for details.
