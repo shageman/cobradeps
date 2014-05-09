@@ -13,7 +13,7 @@ Component-based Ruby/Rails applications use local 'path' gem references to struc
 utilities for printing and exporting such dependencies.
 DOC
 
-  spec.homepage      = ''
+  spec.homepage      = 'https://github.com/shageman/cbradeps'
   spec.license       = 'MIT'
 
   spec.files         = %w(
