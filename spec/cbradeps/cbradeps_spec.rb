@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Cbradeps do
   before do
     @puts = []
-    Cbradeps.stub(:puts) do |arg|
+    Cbradeps.stub(:outputs) do |arg|
       @puts << arg
     end
   end
