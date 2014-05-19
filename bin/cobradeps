@@ -1,10 +1,10 @@
 #!/usr/bin/ruby
 
-require_relative "../lib/cbradeps"
+require_relative "../lib/cobradeps"
 
 def help_text
   <<-USAGE
-cbradeps [OPTION] [application path]
+cobradeps [OPTION] [application path]
 
 Component-based Ruby/Rails dependency grapher.
 

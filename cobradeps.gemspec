@@ -3,7 +3,7 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
-  spec.name          = 'cbradeps'
+  spec.name          = 'cobradeps'
   spec.version       = '0.1.1'
   spec.authors       = ['Stephan Hagemann']
   spec.email         = ['stephan.hagemann@gmail.com']
@@ -13,15 +13,15 @@ Component-based Ruby/Rails applications use local 'path' gem references to struc
 utilities for printing and exporting such dependencies.
 DOC
 
-  spec.homepage      = 'https://github.com/shageman/cbradeps'
+  spec.homepage      = 'https://github.com/shageman/cobradeps'
   spec.license       = 'MIT'
 
   spec.files         = %w(
-                          bin/cbradeps
-                          cbradeps.gemspec
+                          bin/cobradeps
+                          cobradeps.gemspec
                           Gemfile
-                          lib/cbradeps/gemfile_scraper.rb
-                          lib/cbradeps.rb
+                          lib/cobradeps/gemfile_scraper.rb
+                          lib/cobradeps.rb
                           LICENSE
                           Rakefile
                           README.md

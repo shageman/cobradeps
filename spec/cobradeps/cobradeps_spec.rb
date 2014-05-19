@@ -8,7 +8,7 @@ describe Cbradeps do
     end
   end
 
-  it "outputs a cbra dependency structure as text" do
+  it "outputs a cobra dependency structure as text" do
     start_path = File.expand_path(File.join(__FILE__, "..", "..", "..", "spec", "examples", "letters", "E1"))
     expected_path = File.expand_path(File.join(__FILE__, "..", "..", "..", "spec", "examples", "letters", "F"))
 
@@ -39,7 +39,7 @@ describe Cbradeps do
       GraphViz.stub(:new).and_return @mock_graph
     end
 
-    it "outputs a cbra dependency structure as a png" do
+    it "outputs a cobra dependency structure as a png" do
       start_path = File.expand_path(File.join(__FILE__, "..", "..", "..", "spec", "examples", "letters", "A"))
 
       @mock_graph.should_receive(:output).with({:png => "graph.png"})
@@ -80,7 +80,7 @@ describe Cbradeps do
       ])
     end
 
-    it "outputs a cbra dependency structure as a dot file" do
+    it "outputs a cobra dependency structure as a dot file" do
       start_path = File.expand_path(File.join(__FILE__, "..", "..", "..", "spec", "examples", "letters", "A"))
 
       @mock_graph.should_receive(:output).with({:dot => "graph.dot"})

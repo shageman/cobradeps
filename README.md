@@ -1,12 +1,12 @@
-# cbradeps [![Build Status](https://travis-ci.org/shageman/cbradeps.svg?branch=master)](https://travis-ci.org/shageman/cbradeps) [![Gem Version](https://badge.fury.io/rb/cbradeps.svg)](http://badge.fury.io/rb/cbradeps) [![Code Climate](https://codeclimate.com/github/shageman/cbradeps.png)](https://codeclimate.com/github/shageman/cbradeps) [![Dependency Status](https://gemnasium.com/shageman/cbradeps.svg)](https://gemnasium.com/shageman/cbradeps)
+# cobradeps [![Build Status](https://travis-ci.org/shageman/cobradeps.svg?branch=master)](https://travis-ci.org/shageman/cobradeps) [![Gem Version](https://badge.fury.io/rb/cobradeps.svg)](http://badge.fury.io/rb/cobradeps) [![Code Climate](https://codeclimate.com/github/shageman/cobradeps.png)](https://codeclimate.com/github/shageman/cobradeps) [![Dependency Status](https://gemnasium.com/shageman/cobradeps.svg)](https://gemnasium.com/shageman/cobradeps)
 
-Prints and exports the dependencies within component-based Ruby/Rails applications (#cbra)
+Prints and exports the dependencies within component-based Ruby/Rails applications (#cobra)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'cbradeps'
+    gem 'cobradeps'
 
 And then execute:
 
@@ -14,11 +14,11 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install cbradeps
+    $ gem install cobradeps
 
 ## Usage
 
-    cbradeps [OPTION] [application path]
+    cobradeps [OPTION] [application path]
 
     Component-based Ruby/Rails dependency grapher.
 
@@ -31,13 +31,13 @@ Or install it yourself as:
 
 ## Example
 
-There are sample #cbra folder structures in `spec/examples`. Here is the graph generated for the letters app structure:
+There are sample #cobra folder structures in `spec/examples`. Here is the graph generated for the letters app structure:
 
-![Letters graph](https://raw.githubusercontent.com/shageman/cbradeps/master/spec/examples/letters.png)
+![Letters graph](https://raw.githubusercontent.com/shageman/cobradeps/master/spec/examples/letters.png)
 
-## #cbra extension to Gemfile
+## #cobra extension to Gemfile
 
-The :path option used for #cbras is typically a relative path. Because of that all gems and apps transitively including a
+The :path option used for #cobras is typically a relative path. Because of that all gems and apps transitively including a
 gem need to state the relative path to every gem with a path relatuive to their root. For an app, this is the reason why it is
 unclear which gems it really directly depends on. That's why all dependencies of apps are omitted from the output graph.
 
@@ -50,7 +50,7 @@ To include direct dependencies of an application, add an additional option to th
     gem "E2", path: "../E2"
     gem "F", path: "../F"
 
-This is the [Gemfile of app A](https://github.com/shageman/cbradeps/blob/master/spec/examples/letters/A/Gemfile)
+This is the [Gemfile of app A](https://github.com/shageman/cobradeps/blob/master/spec/examples/letters/A/Gemfile)
 from the letters example of which you see the graph above.
 
 ##TODOs
