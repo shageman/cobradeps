@@ -28,6 +28,8 @@ If you're using OS X and homebrew, you just need to:
 brew install graphviz
 ```
 
+#### Other Operating Systems
+
 For more information about installation on other operating systems, just check [Graphviz Download Page](http://graphviz.org/Download..php)
 
 ## Usage
