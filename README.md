@@ -15,6 +15,20 @@ And then execute:
 Or install it yourself as:
 
     $ gem install cobradeps
+    
+### Dependencies
+
+You need [Graphviz](http://graphviz.org/) to generate the graph.png
+
+#### OS X
+
+If you're using OS X and homebrew, you just need to:
+
+```bash
+brew install graphviz
+```
+
+For more information about installation on other operating systems, just check [Graphviz Download Page](http://graphviz.org/Download..php)
 
 ## Usage
 
