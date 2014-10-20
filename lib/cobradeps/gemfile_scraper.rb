@@ -85,7 +85,7 @@ module Cbradeps
       end
 
       def direct
-        match = @options.match(/direct(?:\s*=>|:)\s+true/)
+        match = @options.match(/group(?:\s*=>|:)\s+:direct/)
         match ? {direct: true} : {}
       end
     end
