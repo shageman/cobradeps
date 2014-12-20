@@ -1,6 +1,6 @@
 # cobradeps [![Build Status](https://travis-ci.org/shageman/cobradeps.svg?branch=master)](https://travis-ci.org/shageman/cobradeps) [![Gem Version](https://badge.fury.io/rb/cobradeps.svg)](http://badge.fury.io/rb/cobradeps) [![Code Climate](https://codeclimate.com/github/shageman/cobradeps.png)](https://codeclimate.com/github/shageman/cobradeps) [![Dependency Status](https://gemnasium.com/shageman/cobradeps.svg)](https://gemnasium.com/shageman/cobradeps)
 
-Prints and exports the dependencies within component-based Ruby/Rails applications (#cobra)
+Prints and exports the dependencies within component-based Ruby/Rails applications (#cbra)
 
 ## Installation
 
