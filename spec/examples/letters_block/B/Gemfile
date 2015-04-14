@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+
+# Specify your gem's dependencies in B.gemspec
+gemspec
+
+path "../" do
+  gem "C"
+end  

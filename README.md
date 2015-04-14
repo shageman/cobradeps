@@ -51,6 +51,20 @@ There are sample #cobra folder structures in `spec/examples`. Here is the graph 
 
 ![Letters graph](https://raw.githubusercontent.com/shageman/cobradeps/master/spec/examples/letters.png)
 
+## Using `path "..." do` blocks
+The preferred method of referencing #cbra dependencies is via the path block syntax supported by bundler(http://teotti.com/gemfiles-hierarchy-in-ruby-on-rails-component-based-architecture/):
+
+    path "../" do
+      gem "B"
+      gem "C"
+      gem "D"
+      gem "E1"
+      gem "E2"
+      gem "F"
+    end
+
+Note, that you only need to add direct dependencies when using the block syntax (and not transitive dependencies as discussed below).
+
 ## #cobra extension to Gemfile
 
 The :path option used for #cobras is typically a relative path. Because of that all gems and apps transitively including a

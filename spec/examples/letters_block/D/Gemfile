@@ -1,0 +1,9 @@
+source 'https://rubygems.org'
+
+# Specify your gem's dependencies in D.gemspec
+gemspec
+
+path "../" do
+  gem "E1"
+  gem "E2"
+end  

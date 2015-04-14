@@ -19,6 +19,8 @@ module Cbradeps
       end
     end
 
+    private
+
     def transitive_cobra_dependencies
       gem_dependencies.inject([]) do |memo, dep|
         if !!dep[:options][:path]
@@ -29,8 +31,6 @@ module Cbradeps
         memo
       end
     end
-
-    private
 
     def raw_gemspec
       path = File.expand_path(File.join(@root_path, "#{underscore(name)}.gemspec"))
@@ -51,10 +51,20 @@ module Cbradeps
     end
 
     def gem_dependencies
+      in_path_block_dir = nil
       raw_gemfile.split("\n").inject([]) do |memo, line|
-        match = line.match(/gem\s+["']([^'"]+)["'](.*)/)
-        if match
-          memo << {name: match[1], options: OptionParser.new(match[2]).parse}
+        if in_path_block_dir
+          if match = line.match(/gem\s+["']([^'"]+)["'](.*)/)
+            memo << {name: match[1], options: {path: "#{in_path_block_dir}/#{match[1]}", direct: true}}
+          elsif line.match(/end/)
+            in_path_block_dir = nil
+          end
+        else
+          if match = line.match(/gem\s+["']([^'"]+)["'](.*)/)
+            memo << {name: match[1], options: NonBlockOptionParser.new(match[2]).parse}
+          elsif match = line.match(/path\s+[\"\'\:]?([^\"\']*)[\"\']?\s+do/)
+            in_path_block_dir = match[1]
+          end
         end
         memo
       end
@@ -68,7 +78,7 @@ module Cbradeps
           downcase
     end
 
-    class OptionParser
+    class NonBlockOptionParser
       def initialize(options)
         @options = options
       end
