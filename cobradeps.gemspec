@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = 'cobradeps'
-  spec.version       = '0.2.1'
+  spec.version       = '0.3.1'
   spec.authors       = ['Stephan Hagemann']
   spec.email         = ['stephan.hagemann@gmail.com']
   spec.summary       = %q{Prints and exports the dependencies within component-based Ruby/Rails applications}
