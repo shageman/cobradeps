@@ -8,6 +8,7 @@ require 'spec_helper'
         Cbradeps.stub(:outputs) do |arg|
           @puts << arg
         end
+        Cbradeps.stub(:has_edge?).and_return(false)
       end
 
         it "outputs a cobra dependency structure as text" do

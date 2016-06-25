@@ -63,8 +63,11 @@ module Cbradeps
       gem_nodes[gem.name] = g.add_nodes(gem.name)
       outputs "Added #{gem.name} node"
       if dep[:options][:direct]
-        outputs "Added edge from #{app.name} to #{gem.name}"
-        g.add_edges(app_node, gem_nodes[gem.name])
+        if !has_edge?(g, app_node, gem_nodes[gem.name])
+          g.add_edges(app_node, gem_nodes[gem.name])
+          outputs "Added edge from #{app.name} to #{gem.name}"
+        end
+        
       end
     end
 
@@ -84,8 +87,10 @@ module Cbradeps
           gem_nodes[nest_gem.name] = g.add_nodes(nest_gem.name)
           outputs "Added to #{nest_gem.name} node"
         end
-        g.add_edges(gem_nodes[gem.name], gem_nodes[nest_gem.name])
-        outputs "Added edge from #{gem.name} to #{nest_gem.name}"
+        if !has_edge?(g, gem_nodes[gem.name], gem_nodes[nest_gem.name])
+          g.add_edges(gem_nodes[gem.name], gem_nodes[nest_gem.name]) 
+          outputs "Added edge from #{gem.name} to #{nest_gem.name}"
+        end
       end
       cobra_deps += gem.cobra_dependencies
       i+=1
@@ -100,4 +105,17 @@ module Cbradeps
   end
 
   private_class_method :outputs
+
+  def self.has_edge?(g, node1, node2)
+    g.each_edge do |edge|
+      if edge.node_one == node1.id && edge.node_two == node2.id
+        return true 
+      end
+    end
+    return false
+  end
+  
+  private_class_method :has_edge?
+  
+  
 end
