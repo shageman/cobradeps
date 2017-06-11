@@ -40,5 +40,6 @@ gem 'spring',        group: :development
 
 path ".." do
   gem "B"
+  gem "C"
 end
 

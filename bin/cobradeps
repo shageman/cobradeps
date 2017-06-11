@@ -9,11 +9,13 @@ cobradeps [OPTION] [application path]
 Component-based Ruby/Rails dependency grapher.
 
 Options are...
-    -t, --text                       DEFAULT Outputs a textual representation of the dependencies
-    -g, --graph                      Outputs graph.png to the current directory
-    -d, --dot                        Outputs graph.dot to the current directory
+    -t, --text                     DEFAULT Outputs a textual representation of the dependencies
+    -g FILENAME, --graph FILENAME  Outputs FILENAME.png to the current directory
+    -d FILENAME, --dot FILENAME    Outputs FILENAME.dot to the current directory
 
-    -h, -H, --help                   Display this help message.
+                                   Leave off the extensions of filenames. They will be added for you.
+
+    -h, -H, --help                 Display this help message.
   USAGE
 end
 
@@ -28,9 +30,10 @@ case ARGV.size
     else
       path = ARGV[0]
     end
-  when 2
+  when 3
     option = ARGV[0]
-    path = ARGV[1]
+    filename = ARGV[1]
+    path = ARGV[2]
   else
     puts "Incorrect invocation. Please see help:\n\n"
     puts help_text
@@ -41,9 +44,9 @@ if option
   if %w(--help -h -H).include? option
     puts help_text
   elsif %w(-g --graph).include? option
-    Cbradeps.output_graph path
+    Cbradeps.output_graph path, filename
   elsif %w(-d --dot).include? option
-    Cbradeps.output_dot path
+    Cbradeps.output_dot path, filename
   elsif %w(-t --text).include? option
     Cbradeps.output_text path
   end

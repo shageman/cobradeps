@@ -39,7 +39,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem "B", path: "../B", group: :direct
-gem "C", path: "../C"
+gem "C", path: "../C", group: :direct
 gem "D", path: "../D"
 gem "E1", path: "../E1"
 gem "E2", path: "../E2"

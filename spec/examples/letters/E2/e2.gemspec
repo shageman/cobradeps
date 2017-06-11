@@ -1,11 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'E2/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "E2"
-  spec.version       = E2::VERSION
+  spec.version       = "0.01"
   spec.authors       = ["Stephan Hagemann"]
   spec.email         = ["stephan.hagemann@gmail.com"]
   spec.summary       = %q{TODO: Write a short summary. Required.}
