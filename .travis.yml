@@ -1,7 +1,7 @@
 language: ruby
 
 os:
-  - linux
+  # - linux
   - osx
 
 addons:
