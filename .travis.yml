@@ -1,0 +1,17 @@
+language: ruby
+
+os:
+  - linux
+  - osx
+
+addons:
+  apt:
+    packages:
+      - graphviz
+
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install graphviz; fi
+
+script:
+  - rspec
