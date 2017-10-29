@@ -73,14 +73,14 @@ unclear which gems it really directly depends on. That's why all dependencies of
 
 To include direct dependencies of an application, add an additional option to the `gem` line from the Gemfile like so:
 
-    gem "B", path: "../B", group: :direct
+    gem "B", path: "../B", group: [:default, :direct]
     gem "C", path: "../C"
     gem "D", path: "../D"
     gem "E1", path: "../E1"
     gem "E2", path: "../E2"
     gem "F", path: "../F"
 
-Why do I need to add _group: :direct?_? In the first release, cobradeps was checking for direct: true, until some time ago this year, the extraneous option `direct:` worked, but then a check was added to not allow extra options and the feature has been broken ever since. (as stated by @shageman on his [merge commit](https://github.com/shageman/cobradeps/commit/6ccf345ab3a34d5f415bb2f381911a3143bb3fd5)).
+Why do I need to add _group: [:default, :direct]?_? In the first release, cobradeps was checking for direct: true, until some time ago, the extraneous option `direct:` worked, but then a check was added to not allow extra options and the feature has been broken ever since. (as stated by @shageman on his [merge commit](https://github.com/shageman/cobradeps/commit/6ccf345ab3a34d5f415bb2f381911a3143bb3fd5)).
 
 So the hack to allow cobradeps check for direct dependency was use one of the possible options that bundler allows on Gemfile, and as group is used to group gems, normally only used with common values (:production, :development and :test) what makes possible for cobradeps checks for _group: :direct_
 
