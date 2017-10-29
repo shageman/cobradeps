@@ -6,7 +6,7 @@ module Cbradeps
   require_relative "cobradeps/gemfile_scraper"
 
   def self.output_text(root_path = nil)
-    path = root_path || current_path
+    path = File.expand_path(root_path) || File.expand_path(current_path)
     app = GemfileScraper.new(path)
 
     outputs "APP"
@@ -31,12 +31,12 @@ module Cbradeps
   end
 
   def self.output_graph(root_path = nil, filename)
-    path = root_path || current_path
+    path = File.expand_path(root_path) || File.expand_path(current_path)
     graph(path).output(:png => "#{filename}.png")
   end
 
   def self.output_dot(root_path = nil, filename)
-    path = root_path || current_path
+    path = File.expand_path(root_path) || File.expand_path(current_path)
     graph(path).output(:dot => "#{filename}.dot")
   end
 
