@@ -87,7 +87,11 @@ So the hack to allow cobradeps check for direct dependency was use one of the po
 This is the [Gemfile of app A](https://github.com/shageman/cobradeps/blob/master/spec/examples/letters/A/Gemfile)
 from the letters example of which you see the graph above.
 
-##TODOs
+If you follow this approach, make sure to change the `Bundler.require` line in `config/application.rb` as follows: 
+
+    Bundler.require(:direct, *Rails.groups)
+
+## TODOs
 
 * support windows folders (searching for a couple slashes)
 * support windows: don't shell out to find gemspecs and gemfiles
